@@ -1,0 +1,22 @@
+class Solution:
+    def romanToInt(self, s: str) -> int:
+    '''Takes a Roman numeral string and converts it to an Int'''
+        roman_int_values = {
+             'I':1,
+             'V':5,
+             'X':10,
+             'L':50,
+             'C':100,
+             'D':500,
+             'M':1000
+             }#This dict contains the character-integer correllations of Roman numerals 
+             
+        answer = 0 # initialize our variable that we'll be using to sum up our numerals once they are converted
+
+        s = s.replace('IV', 'IIII').replace('IX', 'VIIII').replace('XL', 'XXXX').replace('XC', 'LXXXX').replace('CD', 'CCCC').replace('CM', 'DCCCC')
+            #the above replaces compressed roman numerals with their expanded form which is easier to perform operations on.
+        
+        for char in s:
+            answer += roman_int_values.get(char) #this iterates through the dictionary and adds their key value to answer
+
+        return(answer) #this spits out an int
