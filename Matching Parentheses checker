@@ -1,0 +1,15 @@
+#This snippet takes a string of parens 's' as input and checks if each opening paren has a corresponding closing paren. 
+class Solution:
+    def isValid(self, s: str) -> bool:
+        if len(s) % 2 != 0:
+            return False #if the length of the string is odd numbered there will be no way that all parens match.
+        while s:
+            if '{}' in s:
+                s = s.replace('{}', '')#replace all instances of '()' with nothing thereby removing them from the input. Repeat this with each type of parentheses. If at the end you have chars remaining then there is an unmatched paren and so you return False. 
+            elif '()' in s:
+                s = s.replace('()', '') 
+            elif '[]' in s:
+                s = s.replace('[]', '')
+            else:
+                return False
+        return True#if after removing all matching pairs of parens there is nothing left in the string, it is safe to say that all parens have a match.
