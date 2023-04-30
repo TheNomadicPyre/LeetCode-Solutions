@@ -1,0 +1,30 @@
+'''
+Given an array of integers nums which is sorted in ascending order, and an integer target, write a function to search target in nums. 
+If target exists, then return its index. Otherwise, return -1.
+
+Constraints:
+
+    1 <= nums.length <= 104
+    -104 < nums[i], target < 104
+    All the integers in nums are unique.
+    nums is sorted in ascending order.
+
+'''
+You must write an algorithm with O(log n) runtime complexity.
+class Solution:
+    def search(self, nums: List[int], target: int) -> int:
+        left = 0
+        right = len(nums) - 1 #returns the last element in the array 
+        while left <= right:
+            #This condition stays true until the array is sorted
+            middle = (left + right)//2
+            if nums[middle] == target: 
+            #If the target element is the middle, return it
+                return middle
+            elif nums[middle] > target:
+            #If the middle is greater than the target, check the left half of the array
+                right = middle - 1
+            else: 
+            #otherwise the target is in the right side of the array (the greater portion) 
+                left = middle +1
+        return -1 #If the element is not found return -1
